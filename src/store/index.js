@@ -15,6 +15,6 @@ export default createStore({
       .then(data => context.state.products = data)
     },
   },
-  modules: {
+  modules: {  
   }
 })
