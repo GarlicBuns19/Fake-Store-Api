@@ -31,7 +31,8 @@ export default createStore({
           state.cart
         }
       }
-      state.cart.push(product)
+      let cartID = state.cart.length + 1
+      state.cart.push({cartID,product})
     }
   },
   actions: {
@@ -51,6 +52,11 @@ export default createStore({
     addToCart: (context,product) => {
       console.log(product)
       context.commit('cart',product)
+    },
+    deleteItemCart : (context,item) => {
+      console.log(`context.state.cart.${item.cartID}`);
+      context.state.cart.pop(item.cartID,1)
+      context.dispatch('getCart')
     }
   },
   modules: {},
