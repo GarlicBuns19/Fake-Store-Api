@@ -21,6 +21,7 @@
         <router-link :to="{name : 'product', params : {id : product.id}  }">
             <img :src="product.image" alt="" width="200" height="200" />
         </router-link>
+        <button type="button" @click="this.$store.dispatch('addToCart',product)">Add to cart</button>
       </div>
     </div>
   </div>

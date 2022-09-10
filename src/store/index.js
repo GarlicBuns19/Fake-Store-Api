@@ -25,8 +25,13 @@ export default createStore({
       });
     },
     cart(state,product){
-      let cart = state.cart
-      cart.push(product)
+      if(state.cart == null){
+        state.cart = []
+        if(state.cart.length > 0){
+          state.cart
+        }
+      }
+      state.cart.push(product)
     }
   },
   actions: {
@@ -44,6 +49,7 @@ export default createStore({
       context.state.cart
     },
     addToCart: (context,product) => {
+      console.log(product)
       context.commit('cart',product)
     }
   },
