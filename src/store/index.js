@@ -4,6 +4,7 @@ export default createStore({
   state: {
     products: "",
     product: "",
+    cart: null
   },
   getters: {},
   mutations: {
@@ -23,6 +24,10 @@ export default createStore({
         }
       });
     },
+    cart(state,product){
+      let cart = state.cart
+      cart.push(product)
+    }
   },
   actions: {
     shopProducts: async (context) => {
@@ -35,6 +40,12 @@ export default createStore({
         .then((res) => res.json())
         .then((data) => context.commit("stateProduct", data));
     },
+    getCart: (context) => {
+      context.state.cart
+    },
+    addToCart: (context,product) => {
+      context.commit('cart',product)
+    }
   },
   modules: {},
 });
