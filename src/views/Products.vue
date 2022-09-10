@@ -15,12 +15,12 @@
         v-for="product in products"
         :key="product.id"
       >
-        <h1>R {{product.price}} </h1>
-        <h3>{{ product.id }}</h3>
-        {{ product.title }}
-        <router-link :to="{name : 'product', params : {id : product.id}  }">
-            <img :src="product.image" alt="" width="200" height="200" />
-        </router-link>
+      <h3>{{ product.id }}</h3>
+      {{ product.title }}
+      <router-link :to="{name : 'product', params : {id : product.id}  }">
+        <img :src="product.image" alt="" width="200" height="200" />
+      </router-link>
+      <h1>R {{product.price}} </h1>
         <button type="button" @click="this.$store.dispatch('addToCart',product)">Add to cart</button>
       </div>
     </div>
