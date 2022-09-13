@@ -3,20 +3,19 @@
   <h2>We have what you want</h2>
   <div class="container" v-if="products">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <button @click="sortByPrice">Sort by Price</button>
             <button @click="sortByPriceDesc">Sort by Price</button>
             <button @click="sortByTitle">Sort by title</button>
         </div>
-        <div class="col-md-6">
-        </div>
       <div
-        class="col-12 col-md-3 col-lg-3"
+        class="col-md-4 mx-auto"
         v-for="product in products"
         :key="product.id"
+        id="productCard"
       >
-      <h3>{{ product.id }}</h3>
-      {{ product.title }}
+      <h3>{{ product.title }}</h3>
+      <!-- {{ product.title }} -->
       <router-link :to="{name : 'product', params : {id : product.id}  }">
         <img :src="product.image" alt="" width="200" height="200" />
       </router-link>
@@ -50,3 +49,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+#productCard{
+  margin: 1px;
+}
+</style>
