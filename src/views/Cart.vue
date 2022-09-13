@@ -1,15 +1,21 @@
 <template>
-  <div v-if="cart">
-    <div v-for="item in cart" :key="item">
-      <h1>{{ item.product.title }}</h1>
-      <h1>{{ item.cartID }}</h1>
-      <button @click="this.$store.dispatch('deleteItemCart', item)">
-        Delete
-      </button>
+  <div class="container" v-if="cart">
+    <div class="row" v-for="item in cart" :key="item">
+      <div class="col-md-6">
+        <img :src="item.product.image" alt="" class="img-fluid" />
+      </div>
+      <div class="col-md-6">
+        <h1>{{ item.product.title }}</h1>
+      </div>
+      <div class="col-md-12">
+        <button @click="this.$store.dispatch('deleteItemCart', item)">
+          Delete
+        </button>
+      </div>
     </div>
-    <h1>{{ totalPrice }}</h1>
   </div>
   <div v-else>Nothing in cart</div>
+  <h1>R{{ totalPrice }}</h1>
 </template>
 <script>
 export default {
@@ -19,11 +25,11 @@ export default {
     },
     totalPrice() {
       let cart = this.$store.state.cart;
-        let sum = cart.reduce((x, c) => {
-          return x + c.product.price;
-        }, 0);
-        console.log(sum)
-        return sum
+      let sum = cart.reduce((x, c) => {
+        return x + c.product.price;
+      }, 0);
+      console.log(sum);
+      return sum;
     },
   },
   mounted() {
@@ -31,3 +37,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+img {
+  width: 50%;
+  height: 400px;
+}
+</style>
